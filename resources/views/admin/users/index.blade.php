@@ -6,7 +6,17 @@
 @section('content')
 
 
-           
+
+   <h1>Users</h1>
+
+
+     @if(Session::has('deleted_user'))
+
+       <p>{{session('deleted_user')}}</p>
+
+     @endif
+
+
   <table class="table">
     <thead>
       <tr>
@@ -44,6 +54,7 @@
      
     </tbody>
   </table>
+
 
 
 
