@@ -43,18 +43,18 @@ class AdminUsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(UsersRequest $request)
     {
         //
 
-        if(trim($request->password) == ''){
+        if (trim($request->password) == '') {
 
             $input = $request->except('password');
 
-        } else{
+        } else {
 
             $input = $request->all();
 
@@ -63,33 +63,32 @@ class AdminUsersController extends Controller
         }
 
 
-       if($file = $request->file('photo_id')) {
+        if ($file = $request->file('photo_id')) {
 
-        $name = time() . $file->getClientOriginalName();
+            $name = time() . $file->getClientOriginalName();
 
-        $file->move('images', $name);
+            $file->move('images', $name);
 
-        $photo = Photo::create(['file'=>$name]);
+            $photo = Photo::create(['file' => $name]);
 
-        $input['photo_id'] = $photo->id;
+            $input['photo_id'] = $photo->id;
 
-       }
+        }
 
 
-       User::create($input);
-
+        User::create($input);
 
 
         return redirect('/admin/users');
 
         // return $request->all();
-        
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -101,7 +100,7 @@ class AdminUsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -120,36 +119,36 @@ class AdminUsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(UsersEditRequest $request, $id)
     {
         //
 
-    $user = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
-       if(trim($request->password) == ''){
+        if (trim($request->password) == '') {
 
             $input = $request->except('password');
 
-        } else{
+        } else {
 
             $input = $request->all();
 
             $input['password'] = bcrypt($request->password);
 
         }
-        
 
-        if($file = $request->file('photo_id')){
+
+        if ($file = $request->file('photo_id')) {
 
             $name = time() . $file->getClientOriginalName();
 
             $file->move('images', $name);
 
-            $photo = Photo::create(['file'=>$name]);
+            $photo = Photo::create(['file' => $name]);
 
             $input['photo_id'] = $photo->id;
 
@@ -164,12 +163,19 @@ class AdminUsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        return view('admin.users.destroy');
+
+        User::findOrFail($id)->delete();
+
+        return redirect('/admin/users');
+
+
     }
+
+
 }
