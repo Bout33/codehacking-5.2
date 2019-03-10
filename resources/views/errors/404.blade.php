@@ -1,1 +1,12 @@
-<h1>404 no such page directory</h1>
+@extends('layouts.app')
+
+
+
+@section('content')
+
+    <h1 class="text-center">Oops page not available</h1>
+
+
+
+
+@stop
