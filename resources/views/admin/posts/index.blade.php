@@ -9,14 +9,14 @@
     <table class="table">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Post Owner</th>
-            <th>Category</th>
-            <th>Photo</th>
-            <th>Title</th>
-            <th>Body</th>
-            <th>Created</th>
-            <th>Updated</th>
+              <th>Id</th>
+              <th>Photo</th>
+              <th>Post Owner</th>
+              <th>Category</th>
+              <th>Title</th>
+              <th>Body</th>
+              <th>Created</th>
+              <th>Updated</th>
           </tr>
         </thead>
         <tbody>
@@ -27,9 +27,9 @@
 
           <tr>
               <td>{{$post->id}}</td>
+              <td><img height="50" src="{{$post->photo ? $post->photo->file : 'no photo'}}" alt=""></td>
               <td>{{$post->user->name}}</td>
               <td>{{$post->category_id}}</td>
-              <td>{{$post->photo_id}}</td>
               <td>{{$post->title}}</td>
               <td>{{$post->body}}</td>
               <td>{{$post->created_at}}</td>
