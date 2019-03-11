@@ -2,6 +2,7 @@
 
 use App\User;
 use App\Role;
+use App\Post;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
