@@ -11,9 +11,6 @@ class Photo extends Model
     protected $uploads = '/images/';
 
 
-
-
-
 	protected $fillable = ['file'];
 
 
