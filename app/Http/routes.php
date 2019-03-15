@@ -3,6 +3,7 @@
 use App\User;
 use App\Role;
 use App\Post;
+use App\Category;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
