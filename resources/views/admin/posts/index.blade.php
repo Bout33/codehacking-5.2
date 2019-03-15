@@ -31,7 +31,7 @@
               <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
               <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
               <td>{{$post->title}}</td>
-              <td>{{str_limit($post->body, 30)}}</td>
+              <td>{{str_limit($post->body, 50)}}</td>
               <td>{{$post->created_at}}</td>
               <td>{{$post->updated_at->diffForHumans()}}</td>
           </tr>
