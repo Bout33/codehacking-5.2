@@ -1,9 +1,6 @@
 <?php
 
-use App\User;
-use App\Role;
-use App\Post;
-use App\Category;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -37,6 +34,10 @@ Route::group(['middleware' =>'admin'], function (){
     Route::resource('admin/posts', 'AdminPostsController');
 
     Route::resource('admin/categories', 'AdminCategoriesController');
+
+    Route::resource('admin/media', 'AdminMediasController');
+
+    Route::get('admin/media/upload', ['as'=>'admin.media.upload', 'uses'=> 'AdminMediasController@store']);
 
 
 });
